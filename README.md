@@ -9,6 +9,7 @@ Version 1 features:
 - Automatic subnet detection (if you don't specify one).
 - JSON output with per-device info (IP, MAC, hostname, vendor).
 - Simple star-style PNG topology diagram using Graphviz.
+- Local-first hostname resolution using **mDNS (Bonjour-style)**, with optional traditional reverse DNS lookups.
 
 > **Important:** CASA_SCAN is intended **only** for scanning networks you own or are explicitly authorized to scan (e.g., your own home network).
 
@@ -26,6 +27,7 @@ Version 1 features:
   - `scapy`
   - `netifaces`
   - `graphviz`
+  - `dnspython`  (used for local mDNS and optional reverse-DNS lookups)
 
 ---
 
@@ -65,25 +67,25 @@ sudo python -m casa_scan.cli
 
 Scapy requires **Npcap** on Windows.
 
-1. Download & install Npcap (with WinPcap compatibility mode enabled):  
-   https://nmap.org/npcap/
+Download & install Npcap (with WinPcap compatibility mode enabled):  
+https://nmap.org/npcap/
 
-2. Install Graphviz:  
-   https://graphviz.org/download/
+Install Graphviz:  
+https://graphviz.org/download/
 
-3. Install Python deps:
+Install Python deps:
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-4. Run the scanner (Admin recommended):
+Run the scanner (Admin recommended):
 
 ```powershell
 python -m casa_scan.cli
 ```
 
-> Windows ICMP and ARP behavior varies by driver. Npcap must be installed.
+Windows ICMP and ARP behavior varies by driver. Npcap must be installed.
 
 ---
 
@@ -152,6 +154,7 @@ This will:
 
 - Detect your primary IPv4 subnet from the default gateway.
 - Run an ARP sweep (and ICMP ping by default).
+- Use local mDNS to resolve hostnames where possible.
 - Output:
   - `devices.json`
   - `topology.png`
@@ -166,7 +169,37 @@ python -m casa_scan.cli --subnet 192.168.1.0/24
 
 ---
 
-### 4. Disable ping (ARP only)
+### 4. Control hostname resolution (mDNS vs rDNS)
+
+By default, CASA_SCAN:
+
+- Tries mDNS first (224.0.0.251:5353, Bonjour-style, local-only).
+- Does **not** query your ISP DNS unless `--rdns` is provided.
+
+You can adjust behavior:
+
+Disable mDNS (no local multicast lookups):
+
+```bash
+python -m casa_scan.cli --no-mdns
+```
+
+Enable reverse DNS (may hit ISP resolvers):
+
+```bash
+python -m casa_scan.cli --rdns
+```
+
+Combine both:
+
+```bash
+python -m casa_scan.cli --rdns --no-mdns      # rDNS only
+python -m casa_scan.cli --rdns                # mDNS, then rDNS fallback
+```
+
+---
+
+### 5. Disable ping (ARP only)
 
 ```bash
 python -m casa_scan.cli --no-ping
@@ -174,7 +207,7 @@ python -m casa_scan.cli --no-ping
 
 ---
 
-### 5. Custom output paths
+### 6. Custom output paths
 
 ```bash
 python -m casa_scan.cli --json-output my_devices.json --graph-output my_topology.png
@@ -183,8 +216,6 @@ python -m casa_scan.cli --json-output my_devices.json --graph-output my_topology
 ---
 
 ## JSON Output Format
-
-`devices.json` looks like:
 
 ```json
 {
@@ -208,56 +239,53 @@ python -m casa_scan.cli --json-output my_devices.json --graph-output my_topology
 }
 ```
 
+Notes:
+
+- `vendor` is derived from a local `oui_db.csv` file.
+- `hostname` is from mDNS by default, or reverse DNS when `--rdns` is used.
+
 ---
 
 ## Topology PNG
 
-`topology.png` is a simple star or radial graph:
-
-- The default gateway is shown as a **double-circle**.
-- Each discovered device appears as a **box node**.
-- Labels show:
-  - IP address
-  - Hostname (if found)
-  - Vendor (if known)
-
-This gives you a quick visual snapshot of your home network at scan time.
+- Gateway = double-circle node
+- Devices = rectangular nodes
+- Labels include IP, hostname, vendor
 
 ---
 
 ## Future Versions Might Include
 
-- Port/service detection  
-- Switch/AP awareness  
-- Historical tracking  
-- Alerts (offline devices, new devices added)  
-- Web dashboard  
-
-CASA_SCAN v1 is intentionally simple so you can extend it easily.
+- Port scanning
+- Switch/AP awareness
+- Historical tracking
+- Alerts for device changes
+- Web dashboard
 
 ---
 
 ## User Agreement & Credits
 
-- CASA_SCAN was created by **Raul Y. Martinez** as a personal/home lab tool.
-- CASA_SCAN is provided **“as is,” without warranty of any kind**. You are responsible for how you use it.
-- You may use, modify, and extend CASA_SCAN for **personal, non-commercial purposes**, unless you explicitly choose a different license for your own fork or distribution.
+CASA_SCAN was created by **Raul Martinez**.
 
-**Authorized Use Only**
+CASA_SCAN is provided *as-is*, without warranty. You are responsible for how you use it.
 
-By using CASA_SCAN, you agree that:
+### Authorized Use Only
 
-- You will **only** scan networks that you own, administer, or are explicitly authorized to test (for example, your own home network or a lab environment you control).
-- You will **not** use CASA_SCAN against third-party networks, neighbors’ Wi-Fi, workplaces, schools, or ISP infrastructure without clear written permission.
-- You are responsible for complying with all applicable laws, regulations, and the terms of service of your ISP or network provider.
+You agree to:
 
-**Credits**
+- Only scan networks you own or have explicit permission to test.
+- Not use CASA_SCAN on third-party networks, workplaces, schools, or ISP infrastructure.
+- Follow local laws, regulations, and ISP terms.
 
-CASA_SCAN builds on the work of the open-source community and tools such as:
+### Credits
 
-- **Python**
-- **Scapy**
-- **netifaces**
-- **Graphviz**
+CASA_SCAN relies on:
 
-Please support these projects and respect their licenses.
+- Python
+- Scapy
+- netifaces
+- Graphviz
+- dnspython
+
+Respect the licenses of these projects.

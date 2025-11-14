@@ -1,0 +1,332 @@
+prefix,vendor
+00:01:E3,3Com
+00:04:76,3Com
+00:50:DA,3Com
+00:90:27,3Com
+00:0C:41,Acer
+00:13:77,Acer
+00:1E:68,Acer
+00:1F:16,Acer
+00:0F:EA,Actiontec
+3C:36:E4,Actiontec
+00:1D:0F,ADTRAN
+00:0C:85,Airspan
+00:17:3F,Alcatel-Lucent
+00:1D:A1,Alcatel-Lucent
+00:09:6B,Allied Telesis
+00:14:6C,Amazon Technologies
+24:6E:96,Amazon Technologies
+28:6A:BA,Amazon Technologies
+44:65:0D,Amazon Technologies
+AC:63:BE,Amazon Technologies
+00:16:6F,Apple
+00:17:F2,Apple
+00:19:E3,Apple
+00:1B:63,Apple
+00:1C:B3,Apple
+00:1D:4F,Apple
+00:1E:52,Apple
+00:1F:5B,Apple
+00:21:E9,Apple
+00:23:12,Apple
+00:23:32,Apple
+00:25:00,Apple
+18:AF:61,Apple
+28:F0:76,Apple
+34:15:9E,Apple
+3C:15:C2,Apple
+40:30:04,Apple
+4C:20:B8,Apple
+58:55:CA,Apple
+60:F8:1D,Apple
+64:A5:C3,Apple
+68:5B:35,Apple
+6C:40:08,Apple
+70:3E:AC,Apple
+74:E1:B6,Apple
+78:A3:E4,Apple
+80:E6:50,Apple
+88:1F:A1,Apple
+8C:85:90,Apple
+94:E9:6A,Apple
+98:01:A7,Apple
+A4:5E:60,Apple
+A8:5C:2C,Apple
+AC:29:3A,Apple
+B0:34:95,Apple
+BC:52:B7,Apple
+C0:63:94,Apple
+C4:2C:03,Apple
+D0:03:4B,Apple
+D4:9A:20,Apple
+DC:86:D8,Apple
+E0:F5:C6,Apple
+EC:35:86,Apple
+F0:18:98,Apple
+F4:5C:89,Apple
+F8:1E:DF,Apple
+FC:E9:98,Apple
+00:0C:43,Aruba Networks
+20:4E:7F,Aruba Networks
+18:64:72,ASUSTek Computer
+38:D5:47,ASUSTek Computer
+40:16:7E,ASUSTek Computer
+60:A4:4C,ASUSTek Computer
+74:D0:2B,ASUSTek Computer
+A0:88:B4,ASUSTek Computer
+BC:AE:C5,ASUSTek Computer
+00:13:10,Belkin International
+00:17:3F,Belkin International
+14:91:82,Belkin International
+20:4E:7F,Belkin International
+80:1F:02,Belkin International
+D8:EC:5E,Belkin International / Linksys
+38:3B:C8,Broadcom
+5C:F9:38,Broadcom
+F0:7F:06,Broadcom
+30:8D:99,Canon
+3C:22:FB,Canon
+48:D6:D5,Canon
+00:0F:66,Cisco Systems
+00:0F:F7,Cisco Systems
+00:13:19,Cisco Systems
+00:16:47,Cisco Systems
+00:18:74,Cisco Systems
+00:1B:54,Cisco Systems
+00:1D:45,Cisco Systems
+00:1E:49,Cisco Systems
+58:6E:4F,Cisco Systems
+A0:EC:F9,Cisco Systems
+F8:7B:8C,Cisco Systems
+00:05:5D,Cisco-Linksys
+00:0C:41,Compal
+48:5A:3F,Compal
+00:24:F7,D-Link
+1C:7E:E5,D-Link
+50:46:5D,D-Link
+74:DA:EA,D-Link
+90:94:E4,D-Link
+B0:48:7A,D-Link
+00:22:48,Delta Networks
+00:24:01,Delta Networks
+00:13:02,Dell
+00:14:22,Dell
+00:15:C5,Dell
+00:16:3E,Dell
+00:1A:A0,Dell
+F0:1F:AF,Dell
+F8:BC:12,Dell
+00:03:FF,Denon
+00:05:CD,Denon
+00:1A:80,Edimax Technology
+74:DA:38,Edimax Technology
+00:1B:11,Garmin International
+00:09:0F,Google
+3C:5A:B4,Google
+54:60:09,Google
+7C:2E:0D,Google
+84:EB:18,Google
+90:FD:61,Google
+A4:77:33,Google
+B4:F1:DA,Google
+C4:2F:90,Google
+D8:6C:63,Google
+E4:F0:42,Google
+F4:F5:D8,Google
+00:1D:7E,Hewlett Packard
+00:1F:29,Hewlett Packard
+00:21:5A,Hewlett Packard
+18:60:24,Hewlett Packard
+3C:D9:2B,Hewlett Packard
+40:A8:F0,Hewlett Packard
+70:5A:0F,Hewlett Packard
+84:34:97,Hewlett Packard
+B8:CA:3A,Hewlett Packard
+D0:BF:9C,Hewlett Packard
+00:19:D2,Huawei
+00:25:68,Huawei
+04:13:65,Huawei
+40:16:3B,Huawei
+58:2C:80,Huawei
+7C:1C:68,Huawei
+8C:1F:64,Huawei
+AC:4E:91,Huawei
+D4:61:9D,Huawei
+E8:CD:2D,Huawei
+00:08:02,Intel Corporate
+00:13:02,Intel Corporate
+00:16:36,Intel Corporate
+00:1B:21,Intel Corporate
+00:1E:37,Intel Corporate
+00:21:6A,Intel Corporate
+00:23:14,Intel Corporate
+00:24:D7,Intel Corporate
+00:26:C7,Intel Corporate
+00:30:48,Konica Minolta
+14:2D:27,LG Electronics
+20:21:A5,LG Electronics
+40:F3:08,LG Electronics
+5C:49:79,LG Electronics
+64:BC:0C,LG Electronics
+7C:96:79,LG Electronics
+88:C6:26,LG Electronics
+A4:77:33,LG Electronics
+C4:36:6C,LG Electronics
+D4:85:64,LG Electronics
+00:26:AB,Lexmark
+00:30:C1,Lexmark
+00:1F:3A,Logitech
+00:24:8C,Logitech
+30:23:03,Logitech
+94:CE:2C,Logitech
+00:1D:FE,Microsoft
+00:22:48,Microsoft
+28:18:78,Microsoft
+40:E2:30,Microsoft
+5C:BA:37,Microsoft
+7C:1E:52,Microsoft
+98:5F:D3,Microsoft
+B4:AE:2B,Microsoft
+C8:3D:97,Microsoft
+00:19:0E,MikroTik
+00:0C:42,Motorola Mobility
+00:1D:6B,Motorola Mobility
+5C:03:39,Motorola Mobility
+A4:77:33,Motorola Mobility
+D0:39:72,Motorola Mobility
+00:18:0A,Netgear
+00:1B:2F,Netgear
+00:22:3F,Netgear
+00:24:B2,Netgear
+00:25:0C,Netgear
+10:0D:7F,Netgear
+20:4E:7F,Netgear
+30:46:9A,Netgear
+7C:0E:CE,Netgear
+A0:40:A0,Netgear
+B0:B9:8A,Netgear
+CC:40:D0,Netgear
+F8:1A:67,Netgear
+00:16:F3,Nokia
+00:19:4F,Nokia
+00:23:CD,Nokia
+28:C2:DD,Nokia
+40:4E:36,Nokia
+5C:57:C8,Nokia
+8C:71:F8,Nokia
+AC:5F:3E,Nokia
+CC:FE:3C,Nokia
+00:01:3B,Panasonic
+00:0F:C1,Panasonic
+18:22:7E,Panasonic
+28:18:78,Panasonic
+64:70:02,Panasonic
+00:0D:93,Philips
+00:17:13,Philips
+00:1C:B0,Philips
+00:22:A9,Philips
+C0:36:55,Philips
+E0:5F:45,Philips
+00:0B:6B,Realtek Semiconductor
+00:0E:C4,Realtek Semiconductor
+00:13:8F,Realtek Semiconductor
+00:16:E6,Realtek Semiconductor
+00:19:DB,Realtek Semiconductor
+00:1D:7D,Realtek Semiconductor
+00:21:85,Realtek Semiconductor
+00:23:54,Realtek Semiconductor
+10:FE:ED,Realtek Semiconductor
+28:E3:47,Realtek Semiconductor
+3C:07:71,Realtek Semiconductor
+40:61:86,Realtek Semiconductor
+50:46:5D,Realtek Semiconductor
+70:4F:57,Realtek Semiconductor
+74:27:EA,Realtek Semiconductor
+80:2A:A8,Realtek Semiconductor
+84:A9:3E,Realtek Semiconductor
+90:E6:BA,Realtek Semiconductor
+A4:17:31,Realtek Semiconductor
+B8:88:E3,Realtek Semiconductor
+C8:3A:35,Realtek Semiconductor
+D8:50:E6,Realtek Semiconductor
+E0:3F:49,Realtek Semiconductor
+F0:B4:29,Realtek Semiconductor
+00:11:22,Samsung Electronics
+00:13:77,Samsung Electronics
+00:15:99,Samsung Electronics
+00:16:32,Samsung Electronics
+00:17:C9,Samsung Electronics
+00:19:E0,Samsung Electronics
+00:1D:25,Samsung Electronics
+00:1F:CC,Samsung Electronics
+34:23:BA,Samsung Electronics
+38:2D:E8,Samsung Electronics
+40:16:7E,Samsung Electronics
+44:4E:1A,Samsung Electronics
+60:A1:0A,Samsung Electronics
+64:77:91,Samsung Electronics
+70:2E:22,Samsung Electronics
+78:25:AD,Samsung Electronics
+8C:77:12,Samsung Electronics
+A4:77:33,Samsung Electronics
+B0:C4:E7,Samsung Electronics
+C0:BD:D1,Samsung Electronics
+D0:66:7B,Samsung Electronics
+E4:F8:9C,Samsung Electronics
+F0:18:98,Samsung Electronics
+00:1F:33,Sony
+00:24:BE,Sony
+1C:7B:21,Sony
+2C:0E:3D,Sony
+3C:07:71,Sony
+48:5D:36,Sony
+60:18:95,Sony
+84:C9:B2,Sony
+A0:02:DC,Sony
+BC:F5:AC,Sony
+D0:76:E7,Sony
+E0:19:1D,Sony
+00:16:B6,TP-Link
+00:1C:10,TP-Link
+00:1D:0F,TP-Link
+00:23:CD,TP-Link
+60:E3:27,TP-Link
+80:89:17,TP-Link
+84:D8:1B,TP-Link
+B0:95:75,TP-Link
+C0:25:E9,TP-Link
+D8:07:B6,TP-Link
+E8:94:F6,TP-Link
+F4:EC:38,TP-Link
+00:15:17,Ubiquiti Networks
+00:27:22,Ubiquiti Networks
+04:18:D6,Ubiquiti Networks
+24:A4:3C,Ubiquiti Networks
+44:D9:E7,Ubiquiti Networks
+78:8A:20,Ubiquiti Networks
+80:2A:A8,Ubiquiti Networks
+84:2B:2B,Ubiquiti Networks
+90:3C:B3,Ubiquiti Networks
+B4:FB:E4,Ubiquiti Networks
+F0:9F:C2,Ubiquiti Networks
+00:14:51,Vizio
+30:85:A9,Vizio
+48:6D:BB,Vizio
+64:52:99,Vizio
+9C:5C:8E,Vizio
+AC:3A:7A,Vizio
+C0:9A:D0,Vizio
+00:0F:DE,Western Digital
+00:50:43,Western Digital
+F4:F2:6D,Western Digital
+00:22:3F,Xiaomi Communications
+18:59:36,Xiaomi Communications
+28:6C:07,Xiaomi Communications
+64:09:80,Xiaomi Communications
+70:11:24,Xiaomi Communications
+78:11:DC,Xiaomi Communications
+8C:BE:BE,Xiaomi Communications
+A4:77:33,Xiaomi Communications
+C8:93:46,Xiaomi Communications
+D8:47:32,Xiaomi Communications
+E8:03:9A,Xiaomi Communications
