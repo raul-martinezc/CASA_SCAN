@@ -239,7 +239,7 @@ CASA_SCAN v1 is intentionally simple so you can extend it easily.
 
 ## User Agreement & Credits
 
-- CASA_SCAN was created by **Raul Martinez** as a personal/home lab tool.
+- CASA_SCAN was created by **Raul Y. Martinez** as a personal/home lab tool.
 - CASA_SCAN is provided **“as is,” without warranty of any kind**. You are responsible for how you use it.
 - You may use, modify, and extend CASA_SCAN for **personal, non-commercial purposes**, unless you explicitly choose a different license for your own fork or distribution.
 
