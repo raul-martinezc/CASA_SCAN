@@ -1,0 +1,61 @@
+# --- macOS junk ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+*.swp
+
+# --- Python cache files ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+.eggs/
+
+# Bytecode cache
+.pytest_cache/
+.cache/
+
+# --- Virtual environments ---
+venv/
+env/
+ENV/
+.venv/
+
+# Pipenv
+Pipfile
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# --- Editors ---
+# VSCode
+.vscode/
+# JetBrains
+.idea/
+
+# --- Graphviz outputs ---
+*.png
+*.pdf
+*.svg
+
+# --- Generated Subnet Topology Diagram - Ignored for Security Reasons ---
+topology.png
+
+# --- Logs ---
+*.log
+
+# --- Build / distribution ---
+build/
+dist/
+*.zip
+
+# --- OS files ---
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
