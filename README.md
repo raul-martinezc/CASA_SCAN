@@ -266,7 +266,7 @@ Notes:
 
 ## User Agreement & Credits
 
-CASA_SCAN was created by **Raul Martinez**.
+CASA_SCAN was created by **Raul Y. Martinez**.
 
 CASA_SCAN is provided *as-is*, without warranty. You are responsible for how you use it.
 
