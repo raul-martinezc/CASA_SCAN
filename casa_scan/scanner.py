@@ -1,3 +1,15 @@
+# CASA_SCAN v1.1 - Scanner Engine (scanner.py)
+#
+# This module does the actual network discovery work:
+#   - Figures out which IPv4 subnet to scan (user-provided or auto-detect).
+#   - Uses ARP to discover live hosts and their MAC addresses.
+#   - Uses ICMP echo (ping) to measure RTT and mark hosts as alive.
+#   - Resolves hostnames using local mDNS by default, with optional reverse DNS (may contact ISP!).
+#   - Looks up MAC address OUIs (in the provided CSV data base) to guess vendor FUTURE FEATURE: (router, phone, IoT, etc.).
+#
+# The raw scan data is normalized into Device and ScanResult objects (models.py)
+# so other parts of the app (CLI, exporters, future GUI/API) can consume it
+#
 from __future__ import annotations
 
 import ipaddress
@@ -20,11 +32,11 @@ from .oui_db import lookup_vendor as oui_lookup_vendor
 
 
 def autodetect_subnet() -> Tuple[ipaddress.IPv4Network, Optional[str]]:
-    """
-    Use netifaces to find the default IPv4 gateway and the corresponding
-    interface, then derive the IPv4 network (subnet) from that interface
-    address + netmask.
-    """
+    
+    #Use netifaces to find the default IPv4 gateway and the corresponding
+    #interface, then derive the IPv4 network (subnet) from that interface
+    #address + netmask.
+
     gws = netifaces.gateways()
     default = gws.get("default", {})
     v4_default = default.get(netifaces.AF_INET)
@@ -46,9 +58,9 @@ def autodetect_subnet() -> Tuple[ipaddress.IPv4Network, Optional[str]]:
 
 
 def parse_subnet(subnet_str: str) -> ipaddress.IPv4Network:
-    """
-    Parse a user-provided subnet string like '192.168.1.0/24'.
-    """
+    
+    #Parse a user-provided subnet string like '192.168.1.0/24'.
+    
     return ipaddress.IPv4Network(subnet_str, strict=False)
 
 
@@ -58,10 +70,10 @@ def arp_sweep(
     timeout: float = 2.0,
     inter: float = 0.02,
 ) -> Dict[str, str]:
-    """
-    Perform an ARP sweep over the given subnet, returning a mapping
-    ip -> mac for all hosts that respond.
-    """
+    
+    #Perform an ARP sweep over the given subnet, returning a mapping
+    #ip -> mac for all hosts that respond.
+    #Scapy will expand pdst into all IPs in that CIDR.
     conf.verb = 0
     broadcast = Ether(dst="ff:ff:ff:ff:ff:ff")
     arp = ARP(pdst=str(subnet))
@@ -78,10 +90,10 @@ def icmp_ping(
     timeout: float = 1.0,
     delay_between: float = 0.03,
 ) -> Dict[str, float]:
-    """
-    Send a single ICMP echo request to each IP and return a mapping
-    ip -> round-trip-time in milliseconds for hosts that respond.
-    """
+    
+    #Send a single ICMP echo request to each IP and return a mapping
+    #ip -> round-trip-time in milliseconds for hosts that respond.
+    
     from scapy.all import sr1  # type: ignore
 
     conf.verb = 0
@@ -100,12 +112,13 @@ def icmp_ping(
 
 
 def mdns_reverse_lookup(ip: str, timeout: float = 0.7) -> Optional[str]:
-    """
-    Try to resolve an IP to a hostname using mDNS only (224.0.0.251:5353).
+    
+    #Try to resolve an IP to a hostname using mDNS only (224.0.0.251:5353).
+    #
+    #This stays on the local link and does NOT go through the ISP resolver.
+    #Returns the hostname (like 'iphone.local') or None if not found.
+    #Whole Point: LOCAL ONLY NAME RESOLUTION
 
-    This stays on the local link and does NOT go through the ISP resolver.
-    Returns the hostname (like 'iphone.local') or None if not found.
-    """
     try:
         # e.g. "192.168.1.30" -> "30.1.168.192.in-addr.arpa."
         ptr_name = dns.reversename.from_address(ip)
@@ -134,22 +147,22 @@ def resolve_hostname(
     use_mdns: bool = True,
     use_rdns: bool = False,
 ) -> Optional[str]:
-    """
-    Resolve an IP to a hostname.
-
-    - First tries mDNS (local, 224.0.0.251:5353) if use_mdns is True.
-    - Then optionally tries traditional reverse DNS (via system resolver)
-      if use_rdns is True.
-
-    Default behavior: use_mdns=True, use_rdns=False → stays local.
-    """
-    # 1) Try mDNS (local, Bonjour-style)
+    
+    #Resolve an IP to a hostname.
+    #
+    #   - First tries mDNS (local, 224.0.0.251:5353) if use_mdns is True.
+    #   - Then optionally tries traditional reverse DNS (via system resolver)
+    #  if use_rdns is True.
+    #
+    #Default behavior: use_mdns=True, use_rdns=False -> (THUS) stays local by default for privacy centered scan.
+    
+    # 1) Try mDNS (local, Bonjour-style) (more private!!!)
     if use_mdns:
         name = mdns_reverse_lookup(ip)
         if name:
             return name
 
-    # 2) Optionally fall back to reverse DNS via system resolver (may hit ISP)
+    # 2) Optionally fall back to reverse DNS via system resolver (may hit ISP!!!!!!!!!!!!!!)
     if use_rdns:
         try:
             host, _, _ = socket.gethostbyaddr(ip)
@@ -167,18 +180,18 @@ def scan(
     use_mdns: bool = True,
     use_rdns: bool = False,
 ) -> ScanResult:
-    """
-    Main scan function.
-
-    - If subnet_str is provided, scan that subnet.
-    - Otherwise, autodetect the default gateway + subnet.
-    - Uses ARP to find live hosts and MAC addresses.
-    - Optionally pings hosts to get RTT and 'alive' flag.
-    - Looks up MAC OUI vendor using oui_db.py.
-    - Hostname resolution:
-        * mDNS first (local, default enabled)
-        * optional reverse DNS via ISP if use_rdns=True
-    """
+    
+    #Main scan function.
+    #
+    #   - If subnet_str is provided, scan that subnet.
+    #   - Otherwise, autodetect the default gateway + subnet.
+    #   - Uses ARP to find live hosts and MAC addresses.
+    #   - Optionally pings hosts to get RTT and 'alive' flag.
+    #   - Looks up MAC OUI vendor using oui_db.py.
+    #   - Hostname resolution:
+    #       * mDNS first (local, default enabled)
+    #       * optional reverse DNS via ISP if use_rdns=True (may hit ISP)
+    #
     started_at = datetime.utcnow().isoformat() + "Z"
 
     if subnet_str:
@@ -193,12 +206,12 @@ def scan(
     # Sort IPs numerically so output is stable and human-friendly
     ips = sorted(arp_results.keys(), key=lambda ip: tuple(int(p) for p in ip.split(".")))
 
-    # 2) Optional ICMP ping to measure RTT & confirm reachability
+    # 2) ICMP ping to measure RTT & confirm reachability (Optional)
     rtts: Dict[str, float] = {}
     if enable_ping and ips:
         rtts = icmp_ping(ips, iface=iface)
 
-    # 3) Build Device objects
+    # 3) Build Device objects (json output)
     devices: List[Device] = []
     for ip in ips:
         mac = arp_results.get(ip)
@@ -230,3 +243,4 @@ def scan(
         started_at=started_at,
         finished_at=finished_at,
     )
+# Final Output is Essentially: All IPs that replied to ARP, enriched with ping/mDNS/rDNS/vendor info.

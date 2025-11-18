@@ -1,3 +1,18 @@
+# exporters.py
+# 
+# This module is responsible for turning a ScanResult into:
+#   1) A JSON file (devices.json) that stores all scan data.
+#   2) A PNG topology diagram using Graphviz (topology.png).
+#
+# It does not perform any scanning itself. Instead, it:
+#   - Receives a ScanResult from scanner.py
+#   - Serializes it via ScanResult.to_dict() for JSON output
+#   - Builds a radial "star" graph with the gateway in the center
+#     and each device as a box node connected to it.
+#
+# cli.py calls these helpers after a scan
+# to save the results in the nicer formats (png and json)
+#
 from __future__ import annotations
 
 import json
@@ -8,7 +23,7 @@ from .models import ScanResult
 
 
 def save_json(scan_result: ScanResult, path: str) -> None:
-    """Save the scan result to a JSON file."""
+    #Save the scan result to a JSON file
     data = scan_result.to_dict()
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
@@ -19,13 +34,12 @@ def export_topology_png(
     path: str,
     title: str = "CASA_SCAN Topology",
 ) -> None:
-    """
-    Export a simple radial topology as a PNG using Graphviz.
-
-    - Uses a radial layout engine ("twopi") so the gateway is central
-      and devices are arranged around it.
-    - Tries to keep the output in a 16:9-ish aspect ratio with readable labels.
-    """
+    
+    #Export a simple radial topology as a PNG using Graphviz.
+    #
+    #   - Uses a radial layout engine ("twopi") so the gateway is central
+    #     and devices are arranged around it.
+    #   - Tries to keep the output in a 16:9-ish aspect ratio with readable labels.
     # Graphviz expects a filename without extension when using render()
     base, _ = os.path.splitext(path)
     if not base:

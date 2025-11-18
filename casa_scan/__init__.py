@@ -4,4 +4,4 @@
 Version 1: ARP sweep + optional ICMP ping, JSON output, and Graphviz PNG topology.
 """
 
-__version__ = "1.1"
+__version__ = "1.2"

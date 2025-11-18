@@ -1,4 +1,13 @@
-
+# models.py
+# 
+# This file defines the object data structures that represent: a single device on the network and the full scan itself
+#   -The scanner creates device objects
+#   -Those get collected into a scan result
+#   -Exporters use ScanResult.to_dict() to write JSON.
+#   -The topology (exporter.py) generator uses ScanResult.devices.
+#   -The CLI summary counts properties of devices in ScanResult.devices.
+# Without these models, everything else would be messy and error-prone.
+#
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 from typing import Optional, List, Dict, Any

@@ -1,8 +1,8 @@
-# CASA_SCAN v1.1
+# CASA_SCAN v1.2
 
 CASA_SCAN is a small, home-focused network scanner designed for **your own home network only**.
 
-Version 1.1 features:
+Version 1.2 features:
 
 - ARP sweep to discover devices on your LAN.
 - Optional ICMP ping to check liveness and round-trip time.
